@@ -1,11 +1,6 @@
 const githubhook = require('githubhook')
-    , github = githubhook({
-  host: '0.0.0.0',
-  port: 3420,
-  path: '/gitback',
-  secret: 'c82410e2ef812790e9ad91b7880c761d8f8bcd8b',
-  logger: console,
-});
+    , { GITHUB_API_KEY } = require('../keys')
+    , github = githubhook({ secret: GITHUB_API_KEY, logger: console });
 
 github.listen();
 github.on('*', (event, type, data) => {
