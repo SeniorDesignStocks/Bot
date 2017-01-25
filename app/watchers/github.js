@@ -3,8 +3,9 @@ const githubhook = require('githubhook')
     , github = githubhook({ secret: GITHUB_API_KEY, logger: console });
 
 github.listen();
-github.on('*', (event, type, data) => {
-  console.log(data);
+github.on('*', function (event, repo, ref, data) {
+  console.log(event);
 });
+
 
 module.exports = github;
